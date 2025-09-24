@@ -10,6 +10,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
 	"github.com/Kritagya123611/Go-Backened/internal/auth"
+	"github.com/Kritagya123611/Go-Backened/internal/products"
 )
 
 func main() {
@@ -35,9 +36,9 @@ func main() {
 		AllowCredentials: true,
 		MaxAge:           300,
 	}))
-
 	router.Post("/signup", auth.SignupHandler)
 	router.Post("/login",auth.LoginHandler)
-
+	router.Get("/products", products.AllProducts)
+	router.Get("/products/{id}", products.GetProductByID) 
 	http.ListenAndServe(":"+port, router)
 }
