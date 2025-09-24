@@ -40,5 +40,6 @@ func main() {
 	router.Post("/login",auth.LoginHandler)
 	router.Get("/products", products.AllProducts)
 	router.Get("/products/{id}", products.GetProductByID) 
+	router.Post("/addproduct",products.AddProduct)
 	http.ListenAndServe(":"+port, router)
 }
